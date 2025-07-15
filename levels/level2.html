@@ -3,17 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <title>Livello 2 – Dragon Ball Cruciverba</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #ffe6f0; /* rosa perla */
+      color: #c8a2c8; /* lilla tenue */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    #level2 {
+      max-width: 600px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    .indizio {
+      font-style: italic;
+      font-size: 30px;
+      color: #d63384; /* puoi cambiarlo se vuoi un lilla più tenue */
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 18px;
+      border: 2px solid #c8a2c8;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #c8a2c8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #b58db5;
+    }
+
+    #cruciverba-feedback {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
   <!-- LIVELLO 2 -->
-  <div id="level2" style="display: none;">
+  <div id="level2">
     <h2>🧩 Dragon Ball – Livello Esperto</h2>  
     <h2>🧩 Cruciverba dell'amore</h2>  
 
-    <p style="font-style: italic; font-size: 40px; color: #d63384;">  
-      Indizio: Hanno creato le sfere del Drago originali e non mangiano cibo.  
-    </p>  
+    <p class="indizio">Indizio: Hanno creato le sfere del Drago originali e non mangiano cibo.</p>  
 
     <p>Completa la parola misteriosa: <strong>N _ _ _ _ _ _ _ _ o</strong></p>  
 
@@ -25,14 +81,7 @@
     <p id="cruciverba-feedback"></p>  
   </div>
 
-  <!-- Bottone per mostrare il livello 2 -->
-  <button onclick="showLevel2()">Avvia Livello 2</button>
-
   <script>
-    function showLevel2() {
-      document.getElementById("level2").style.display = "block";
-    }
-
     function checkCruciverba() {
       const risposta = document.getElementById("cruciverba-input").value.trim().toLowerCase();
       const feedback = document.getElementById("cruciverba-feedback");
