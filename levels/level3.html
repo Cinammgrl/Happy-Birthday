@@ -54,6 +54,9 @@
     </div>
 
     <div id="tarotMessage"></div>
+    <button id="nextLevelBtn" style="display:none; margin-top: 20px;" onclick="goToLevel4()">
+  Vai al Livello 4
+</button>
   </div>
 
   <script>
@@ -75,6 +78,13 @@
       }
 
       document.getElementById("tarotMessage").textContent = message;
+    }
+    document.getElementById("nextLevelBtn").
+    style.display = "inline-block";
+    }
+
+    function goToLevel14() {
+      window.location.href = "level4.html";
     }
   </script>
 </body>
