@@ -79,22 +79,37 @@
     </div>
 
     <p id="cruciverba-feedback"></p>  
+    <p id="cruciverba-feedback"></p>  
+<button id="next-level-btn" onclick="goToLevel3()" style="display: none;">Vai al Livello 3</button>
   </div>
+  <!-- LIVELLO 3 -->
+<div id="level3" style="display: none;">
+  <h2>🎉 Complimenti! Sei al Livello 3!</h2>
+  <p>Qui ci sarà il prossimo enigma o sorpresa ✨</p>
+</div>
 
-  <script>
-    function checkCruciverba() {
-      const risposta = document.getElementById("cruciverba-input").value.trim().toLowerCase();
-      const feedback = document.getElementById("cruciverba-feedback");
+<script>
+  function checkCruciverba() {
+    const risposta = document.getElementById("cruciverba-input").value.trim().toLowerCase();
+    const feedback = document.getElementById("cruciverba-feedback");
+    const nextBtn = document.getElementById("next-level-btn");
 
-      if (risposta === "namecciano") {
-        feedback.textContent = "✅ Corretto! Hai risolto l'enigma!";
-        feedback.style.color = "green";
-      } else {
-        feedback.textContent = "❌ Risposta sbagliata, riprova!";
-        feedback.style.color = "red";
-      }
+    if (risposta === "namecciano") {
+      feedback.textContent = "✅ Corretto! Hai risolto l'enigma!";
+      feedback.style.color = "green";
+      nextBtn.style.display = "inline-block"; // Mostra il bottone
+    } else {
+      feedback.textContent = "❌ Risposta sbagliata, riprova!";
+      feedback.style.color = "red";
+      nextBtn.style.display = "none"; // Nasconde il bottone se la risposta è sbagliata
     }
-  </script>
+  }
+
+  function goToLevel3() {
+    document.getElementById("level2").style.display = "none";
+    document.getElementById("level3").style.display = "block";
+  }
+</script>
 
 </body>
 </html>
