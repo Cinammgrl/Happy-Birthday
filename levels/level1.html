@@ -69,6 +69,21 @@
       popSound.currentTime = 0;
       popSound.play();
     });
+    <audio id="bg-music" src="../assets/audio/loving-sound.mp3" autoplay loop></audio>
+
+<script>
+  document.body.addEventListener('click', () => {
+    const music = document.getElementById("bg-music");
+    if (music.paused) {
+      music.play();
+    }
+  document.body.addEventListener('click', () => {
+    const music = document.getElementById("bg-music");
+    if (music.paused) {
+      music.play();
+    }
+  });
+</script>
   </script>
 
 </body>
