@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ranocchi dell’Amore - Livelli</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: 'Cursive', sans-serif;
+      text-align: center;
+      padding: 40px;
+      color: #8b4d74;
+    }
+
+    h1, h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .froggy {
+      width: 150px;
+      cursor: pointer;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .message {
+      font-size: 1.3em;
+      margin-top: 30px;
+      min-height: 60px;
+      transition: opacity 0.5s;
+    }
+
+    #next-level button {
+      background-color: #d87fa1;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 30px;
+      font-size: 1.3em;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(216, 127, 161, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-family: 'Cursive', sans-serif;
+    }
+
+    #next-level button:hover {
+      background-color: #b75d7f;
+      transform: scale(1.05);
+    }
+
+    #cruciverba-area input {
+      padding: 10px;
+      font-size: 1.2em;
+      border: 2px solid #d87fa1;
+      border-radius: 10px;
+    }
+
+    #cruciverba-area button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 25px;
+      background-color: #d87fa1;
+      color: white;
+      cursor: pointer;
+    }
+
+    #cruciverba-area button:hover {
+      background-color: #b75d7f;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Musica di sottofondo -->
+  <audio id="bg-music" src="assets/audio/loving-sound.mp3" loop></audio>
+  <audio id="pop_sound" src="assets/audio/pop_sound.mp3"></audio>
+
+  <!-- LIVELLO 1 -->
+  <div id="level1">
+    <h1>Il ranocchio dell’amore ha un messaggio per te 💌</h1>
+    <img src="assets/images/ranocchio.gif" alt="Ranocchio" class="froggy" id="frog" />
+    <div class="message" id="message"></div>
+
+    <div id="next-level" style="margin-top: 30px; display: none;">
+      <button id="go-to-level2">
+        Vai al livello 2: Cruciverba
+      </button>
+    </div>
+  </div>
+
+  <!-- LIVELLO 2 -->
+  <div id="level2" style="display: none;">
+    <h2>🧩 Dragon Ball – Livello Esperto</h2>  
+    <h2>🧩 Cruciverba dell'amore</h2>  
+    <p style="font-style: italic; font-size: 40px; color: #d63384; text-align: center; margin-bottom: 20px;">  
+      Indizio: Hanno creato le sfere del Drago originali e non mangiano cibo.  
+    </p>  
+    <p>Completa la parola misteriosa: <strong>N _ _ _ _ _ _ _ o.</strong></p>  
+    <input type="text" id="cruciverba-input" placeholder="Scrivi qui..." />  
+    <button onclick="checkCruciverba()">Invia</button>  
+    <p id="cruciverba-feedback" style="font-size: 40px; margin-top: 10px;"></p>  
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    const messages = [
+      "Sei insieme la quiete e la confusione del mio cuore – Franz Kafka",  
+      "Se l'aria mi raccontasse di te vorrei perdermi per sempre nel vento – Eugenio Montale",  
+      "Sei un cielo stellato – Cesare Pavese",  
+      "Non mi riuscirà più di sognare dopo essere stato così felice accanto a te nella realtà – Dostoevskij",  
+      "Se tu ti ricordi di me, allora non importa se tutto il mondo mi dimentica – Murakami",  
+      "Quando non sarai più parte di me... il cielo sarà così bello che tutto il mondo si innamorerà della notte – Shakespeare",  
+      "Perché io non so dire quel che i suoi occhi mi fanno provare... Occhi. I suoi. – D’Annunzio"  
+    ];
+
+    const frog = document.getElementById("frog");
+    const messageDiv = document.getElementById("message");
+    const popSound = document.getElementById("pop_sound");
+    const bgMusic = document.getElementById("bg-music");
+
+    const nextLevelDiv = document.getElementById("next-level");
+    const goToLevel2Btn = document.getElementById("go-to-level2");
+
+    let clickCount = 0;
+
+    frog.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * messages.length);
+      messageDiv.textContent = messages[randomIndex];
+      popSound.currentTime = 0;
+      popSound.play();
+      clickCount++;
+
+      if (clickCount >= 7) {
+        nextLevelDiv.style.display = "block";
+      }
+    });
+
+    goToLevel2Btn.addEventListener("click", () => {
+      document.getElementById("level1").style.display = "none";
+      document.getElementById("level2").style.display = "block";
+    });
+
+    document.body.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+      }
+    }, { once: true });
+
+    function checkCruciverba() {
+      const input = document.getElementById("cruciverba-input").value.trim().toLowerCase();
+      const feedback = document.getElementById("cruciverba-feedback");
+
+      if (input === "namekiano") {
+        feedback.textContent = "🎉 Esatto! Bravissimə! ❤️";
+        feedback.style.color = "#28a745";
+      } else {
+        feedback.textContent = "❌ Riprova...";
+        feedback.style.color = "#dc3545";
+      }
+    }
+  </script>
+
+</body>
+</html>
