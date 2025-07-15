@@ -1,95 +1,50 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Livello 2 - Cruciverba</title>
-<style>
-  body {
-    font-family: sans-serif;
-    background: #ffe6f0;
-    color: #8b4d74;
-    text-align: center;
-    padding: 40px;
-  }
-  table {
-    margin: 0 auto;
-    border-collapse: collapse;
-  }
-  td {
-    border: 2px solid #8b4d74;
-    width: 40px;
-    height: 40px;
-    text-transform: uppercase;
-  }
-  input {
-    width: 36px;
-    height: 36px;
-    border: none;
-    text-align: center;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    outline: none;
-  }
-  .black {
-    background: #8b4d74;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Livello 2 – Dragon Ball Cruciverba</title>
 </head>
 <body>
 
-  <h1>Livello 2 - Cruciverba dell’Amore</h1>
-  
-  <table>
-    <tr>
-      <td><input maxlength="1" id="c1" /></td>
-      <td><input maxlength="1" id="c2" /></td>
-      <td class="black"></td>
-      <td><input maxlength="1" id="c3" /></td>
-    </tr>
-    <tr>
-      <td class="black"></td>
-      <td><input maxlength="1" id="c4" /></td>
-      <td><input maxlength="1" id="c5" /></td>
-      <td><input maxlength="1" id="c6" /></td>
-    </tr>
-  </table>
+  <!-- LIVELLO 2 -->
+  <div id="level2" style="display: none;">
+    <h2>🧩 Dragon Ball – Livello Esperto</h2>  
+    <h2>🧩 Cruciverba dell'amore</h2>  
 
-  <button id="check">Controlla Risposte</button>
-  <div id="result" style="margin-top:20px; font-size:1.2em;"></div>
-  <div id="next-level" style="margin-top: 30px; display: none;">
-  <button id="go-to-level3" style="font-size:1.2em; padding:10px 20px; cursor:pointer;">
-    Vai al livello 2: tarocchi
-  </button>
-</div>
+    <p style="font-style: italic; font-size: 40px; color: #d63384;">  
+      Indizio: Hanno creato le sfere del Drago originali e non mangiano cibo.  
+    </p>  
+
+    <p>Completa la parola misteriosa: <strong>N _ _ _ _ _ _ _ _ o</strong></p>  
+
+    <div id="cruciverba-area">
+      <input type="text" id="cruciverba-input" placeholder="Scrivi qui..." />  
+      <button onclick="checkCruciverba()">Invia</button>  
+    </div>
+
+    <p id="cruciverba-feedback"></p>  
+  </div>
+
+  <!-- Bottone per mostrare il livello 2 -->
+  <button onclick="showLevel2()">Avvia Livello 2</button>
 
   <script>
-    // Parole da indovinare:
-    // Orizzontale 1: TE
-    // Orizzontale 2: AMO
-    const answers = {
-      c1: 'T',
-      c2: 'E',
-      c3: 'A',
-      c4: 'M',
-      c5: 'O',
-      c6: 'O'
-    };
+    function showLevel2() {
+      document.getElementById("level2").style.display = "block";
+    }
 
-    document.getElementById('check').addEventListener('click', () => {
-      let allCorrect = true;
-      for (const id in answers) {
-        const input = document.getElementById(id);
-        if (!input.value.toUpperCase() || input.value.toUpperCase() !== answers[id]) {
-          allCorrect = false;
-          input.style.backgroundColor = '#f88';
-        } else {
-          input.style.backgroundColor = '#8f8';
-        }
+    function checkCruciverba() {
+      const risposta = document.getElementById("cruciverba-input").value.trim().toLowerCase();
+      const feedback = document.getElementById("cruciverba-feedback");
+
+      if (risposta === "namecciano") {
+        feedback.textContent = "✅ Corretto! Hai risolto l'enigma!";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = "❌ Risposta sbagliata, riprova!";
+        feedback.style.color = "red";
       }
-      const result = document.getElementById('result');
-      result.textContent = allCorrect ? "Bravo! Hai risolto il cruciverba!" : "Ci sono errori, riprova.";
-    });
+    }
   </script>
 
 </body>
