@@ -55,8 +55,8 @@
 
     <div id="tarotMessage"></div>
     <button id="nextLevelBtn" style="display:none; margin-top: 20px;" onclick="goToLevel4()">
-  Vai al Livello 4
-</button>
+      Vai al Livello 4
+    </button>
   </div>
 
   <script>
@@ -65,25 +65,26 @@
 
       switch (cardNumber) {
         case 1:
-          message = "✨ La Stella: Faro nell’oscurità, incarna la speranza che guida l’anima, il sogno che si fa realtà, la pace che nasce dal credere nel futuro.",
+          message = "✨ La Stella: Faro nell’oscurità, incarna la speranza che guida l’anima, il sogno che si fa realtà, la pace che nasce dal credere nel futuro.";
           break;
         case 2:
-          message = "🌞 Il Sole: Fonte di vita e verità, porta la luce che dissolve le ombre, risveglia la gioia nascosta nel cuore,ne spalanca porte di serenità e crescita.",
+          message = "🌞 Il Sole: Fonte di vita e verità, porta la luce che dissolve le ombre, risveglia la gioia nascosta nel cuore, ne spalanca porte di serenità e crescita.";
           break;
         case 3:
-          message = "🎡 La Ruota della Fortuna: Danza incessante del destino, ci ricorda che tutto cambia e si rinnova, anche nelle svolte impreviste si cela il dono, e che ogni passo apre nuove possibilità".,
+          message = "🎡 La Ruota della Fortuna: Danza incessante del destino, ci ricorda che tutto cambia e si rinnova, anche nelle svolte impreviste si cela il dono, e che ogni passo apre nuove possibilità.";
           break;
         default:
           message = "Errore: Carta non riconosciuta.";
       }
 
       document.getElementById("tarotMessage").textContent = message;
-    }
-    document.getElementById("nextLevelBtn").
-    style.display = "inline-block";
+
+      // Mostra il bottone per andare al livello 4 SOLO dopo aver scelto una carta
+      document.getElementById("nextLevelBtn").style.display = "inline-block";
     }
 
-    function goToLevel14() {
+    // Corretto nome funzione: goToLevel4
+    function goToLevel4() {
       window.location.href = "level4.html";
     }
   </script>
