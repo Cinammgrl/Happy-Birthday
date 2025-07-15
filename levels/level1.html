@@ -47,6 +47,7 @@
   <div class="message" id="message"></div>
 
   <audio id="pop-sound" src="../assets/audio/pop.mp3"></audio>
+  <audio id="bg-music" src="../assets/audio/loving-sound.mp3" loop></audio>
 
   <script>
     const messages = [
@@ -62,6 +63,7 @@
     const frog = document.getElementById("frog");
     const messageDiv = document.getElementById("message");
     const popSound = document.getElementById("pop-sound");
+    const bgMusic = document.getElementById("bg-music");
 
     frog.addEventListener("click", () => {
       const randomIndex = Math.floor(Math.random() * messages.length);
@@ -69,21 +71,13 @@
       popSound.currentTime = 0;
       popSound.play();
     });
-    <audio id="bg-music" src="../assets/audio/loving-sound.mp3" autoplay loop></audio>
 
-<script>
-  document.body.addEventListener('click', () => {
-    const music = document.getElementById("bg-music");
-    if (music.paused) {
-      music.play();
-    }
-  document.body.addEventListener('click', () => {
-    const music = document.getElementById("bg-music");
-    if (music.paused) {
-      music.play();
-    }
-  });
-</script>
+    // Per attivare la musica di sottofondo al primo click sul corpo della pagina
+    document.body.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+      }
+    }, { once: true }); // l’evento si attiva una sola volta
   </script>
 
 </body>
