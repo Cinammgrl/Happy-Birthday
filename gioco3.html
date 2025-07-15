@@ -185,74 +185,39 @@
       }
     }, { once: true });
 
+    
     function checkCruciverba() {
-      const input = document.getElementById("cruciverba-input").value.trim().toLowerCase();
-      const feedback = document.getElementById("cruciverba-feedback");
+  const input = document.getElementById("cruciverba-input").value.trim().toLowerCase();
+  const feedback = document.getElementById("cruciverba-feedback");
 
-      if (input === "namecciano") {
-        feedback.textContent = "🎉 Esatto! Bravissimo! ❤️";
-        feedback.style.color = "#28a745";
-      } else {
-        feedback.textContent = "❌ Riprova...";
-        feedback.style.color = "#dc3545";
-      }
-    }
-    const level3Div = document.getElementById("level3");
-
-function goToLevel3() {
-  document.getElementById("level2").style.display = "none";
-  level3Div.style.display = "block";
-}
-
-function checkLevel3Answer() {
-  const form = document.getElementById("quiz-form");
-  const feedback = document.getElementById("level3-feedback");
-  const selected = form.answer.value;
-
-  if (!selected) {
-    feedback.textContent = "❗ Seleziona una risposta prima di inviare.";
-    feedback.style.color = "#dc3545";
-    return;
-  }
-
-  // Per esempio, la risposta "b" è quella giusta
-  if (selected === "b") {
-    feedback.textContent = "❤️ Giusto! Sei un vero romantico!";
+  if (input === "namecciano") {
+    feedback.textContent = "🎉 Esatto! Bravissimə! ❤️";
     feedback.style.color = "#28a745";
+
+    // Mostra pulsante per andare al livello 3 se non esiste già
+    if (!document.getElementById("go-to-level3")) {
+      const btnLevel3 = document.createElement("button");
+      btnLevel3.textContent = "Vai al livello 3: Domanda d'amore";
+      btnLevel3.id = "go-to-level3";
+      btnLevel3.style.marginTop = "20px";
+      btnLevel3.style.padding = "10px 25px";
+      btnLevel3.style.fontSize = "1.2em";
+      btnLevel3.style.borderRadius = "25px";
+      btnLevel3.style.border = "none";
+      btnLevel3.style.backgroundColor = "#d87fa1";
+      btnLevel3.style.color = "white";
+      btnLevel3.style.cursor = "pointer";
+
+      btnLevel3.onclick = () => {
+        goToLevel3();
+      };
+
+      document.getElementById("level2").appendChild(btnLevel3);
+    }
   } else {
-    feedback.textContent = "❌ Mmm... prova un’altra risposta!";
+    feedback.textContent = "❌ Riprova...";
     feedback.style.color = "#dc3545";
   }
-}
-
-    // Sostituisci o aggiungi questo alla fine della funzione checkCruciverba(), quando la risposta è giusta:
-if (input === "namekiano") {
-  feedback.textContent = "🎉 Esatto! Bravissimə! ❤️";
-  feedback.style.color = "#28a745";
-
-  // Mostra pulsante per andare al livello 3
-  if (!document.getElementById("go-to-level3")) {
-    const btnLevel3 = document.createElement("button");
-    btnLevel3.textContent = "Vai al livello 3: Domanda d'amore";
-    btnLevel3.id = "go-to-level3";
-    btnLevel3.style.marginTop = "20px";
-    btnLevel3.style.padding = "10px 25px";
-    btnLevel3.style.fontSize = "1.2em";
-    btnLevel3.style.borderRadius = "25px";
-    btnLevel3.style.border = "none";
-    btnLevel3.style.backgroundColor = "#d87fa1";
-    btnLevel3.style.color = "white";
-    btnLevel3.style.cursor = "pointer";
-
-    btnLevel3.onclick = () => {
-      goToLevel3();
-    };
-
-    document.getElementById("level2").appendChild(btnLevel3);
-  }
-} else {
-  feedback.textContent = "❌ Riprova...";
-  feedback.style.color = "#dc3545";
 }
   </script>
 
