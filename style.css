@@ -48,3 +48,16 @@ p {
   z-index: 0;
   pointer-events: none;
 }
+.cuore {
+  position: absolute;
+  top: -20px;
+  font-size: 2em;
+  animation: caduta linear forwards;
+}
+
+@keyframes caduta {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
