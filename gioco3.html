@@ -63,7 +63,7 @@
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(216, 127, 161, 0.4);
       transition: background-color 0.3s ease, transform 0.2s ease;
-      font-family: 'Cursive', sans-serif;
+      font-family: 'cursive', sans-serif;
     }
 
     #next-level button:hover {
@@ -121,7 +121,7 @@
     <p style="font-style: italic; font-size: 40px; color: #d63384; text-align: center; margin-bottom: 20px;">  
       Indizio: Hanno creato le sfere del Drago originali e non mangiano cibo.  
     </p>  
-    <p>Completa la parola misteriosa: <strong>N _ _ _ _ _ _ _ o.</strong></p>  
+    <p>Completa la parola misteriosa: <strong>N _ _ _ _ _ _ _ _ o.</strong></p>  
     <input type="text" id="cruciverba-input" placeholder="Scrivi qui..." />  
     <button onclick="checkCruciverba()">Invia</button>  
     <p id="cruciverba-feedback" style="font-size: 40px; margin-top: 10px;"></p>  
@@ -196,7 +196,7 @@ e la pace che nasce dal credere nel futuro.",
 porta la luce che dissolve le ombre,
 risveglia la gioia nascosta nel cuore,
 e spalanca porte di serenità e crescita.",
-    3: "🎡 La ruota dela fortuna: Danza incessante del destino,
+    3: "🎡 La ruota della fortuna: Danza incessante del destino,
 ci ricorda che tutto cambia e si rinnova,
 che nelle svolte impreviste si cela il dono,
 e che ogni passo apre nuove possibilità."
@@ -215,7 +215,7 @@ function checkCruciverba() {
   const input = document.getElementById("cruciverba-input").value.trim().toLowerCase();
   const feedback = document.getElementById("cruciverba-feedback");
 
-  if (input === "namecciano") {
+  if (input === "Namecciano") {
     feedback.textContent = "🎉 Esatto! Bravissimo! ❤️";
     feedback.style.color = "#28a745";
 
