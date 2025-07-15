@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Livello 1 - Ranocchi dell’Amore</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: 'Cursive', sans-serif;
+      text-align: center;
+      padding: 40px;
+      color: #8b4d74;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .froggy {
+      width: 150px;
+      cursor: pointer;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .message {
+      font-size: 1.3em;
+      margin-top: 30px;
+      min-height: 60px;
+      transition: opacity 0.5s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Il ranocchio dell’amore ha un messaggio per te 💌</h1>
+
+  <img src="../assets/images/ranocchio.gif" alt="Ranocchio" class="froggy" id="frog" />
+
+  <div class="message" id="message"></div>
+
+  <audio id="pop-sound" src="../assets/audio/pop.mp3"></audio>
+
+  <script>
+    const messages = [
+      "Sei insieme la quiete e la confusione del mio cuore – Franz Kafka",  
+      "Se l'aria mi raccontasse di te vorrei perdermi per sempre nel vento – Eugenio Montale",  
+      "Sei un cielo stellato – Cesare Pavese",  
+      "Non mi riuscirà più di sognare dopo essere stato così felice accanto a te nella realtà – Dostoevskij",  
+      "Se tu ti ricordi di me, allora non importa se tutto il mondo mi dimentica – Murakami",  
+      "Quando non sarai più parte di me... il cielo sarà così bello che tutto il mondo si innamorerà della notte – Shakespeare",  
+      "Perché io non so dire quel che i suoi occhi mi fanno provare... Occhi. I suoi. – D’Annunzio"  
+    ];
+
+    const frog = document.getElementById("frog");
+    const messageDiv = document.getElementById("message");
+    const popSound = document.getElementById("pop-sound");
+
+    frog.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * messages.length);
+      messageDiv.textContent = messages[randomIndex];
+      popSound.currentTime = 0;
+      popSound.play();
+    });
+  </script>
+
+</body>
+</html>
