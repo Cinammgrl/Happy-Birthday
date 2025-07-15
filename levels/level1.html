@@ -36,6 +36,23 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+    #next-level button {
+  background-color: #d87fa1;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 1.3em;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(216, 127, 161, 0.4);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-family: 'Cursive', sans-serif;
+}
+
+#next-level button:hover {
+  background-color: #b75d7f;
+  transform: scale(1.05);
+}
   </style>
 </head>
 <body>
@@ -90,7 +107,7 @@
   });
 
   goToLevel2Btn.addEventListener("click", () => {
-    window.location.href = "livello2.html";  // Aggiorna con il percorso corretto del livello 2
+    window.location.href = "level2.html";  // Aggiorna con il percorso corretto del livello 2
   });
 
   // Musica di sottofondo si attiva al primo click su corpo pagina
