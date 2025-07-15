@@ -215,11 +215,11 @@ function checkCruciverba() {
   const input = document.getElementById("cruciverba-input").value.trim().toLowerCase();
   const feedback = document.getElementById("cruciverba-feedback");
 
-  if (input === "namecciano") { // o la parola corretta
+  if (input === "namecciano") {
     feedback.textContent = "🎉 Esatto! Bravissimo! ❤️";
     feedback.style.color = "#28a745";
 
-    // Mostra pulsante per andare al livello 3 se non esiste già
+    // mostra il pulsante per andare al livello 3
     if (!document.getElementById("go-to-level3")) {
       const btnLevel3 = document.createElement("button");
       btnLevel3.textContent = "Vai al livello 3: Domanda d'amore";
