@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Tarocchi di Cupido</title>
+  <link rel="stylesheet" href="style.css"> <!-- Se hai uno stile comune -->
+  <style>
+    .tarot-cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .tarot-card {
+      width: 150px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .tarot-card:hover {
+      transform: scale(1.1);
+    }
+    #tarotMessage {
+      margin-top: 30px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div id="level3">
+    <h2>Tarocchi di Cupido</h2>
+    <p>Scegli una delle tre carte per scoprire il tuo messaggio...</p>
+    
+    <div class="tarot-cards">
+      <img src="assets/images/ilsole.png" alt="Tarocco Il Sole" onclick="revealTarot(2)" class="tarot-card">
+      <img src="assets/images/lastella.png" alt="Tarocco La Stella" onclick="revealTarot(1)" class="tarot-card">
+      <img src="assets/images/ruotadellafortuna.png" alt="Tarocco La Ruota della Fortuna" onclick="revealTarot(3)" class="tarot-card">
+    </div>
+
+    <div id="tarotMessage"></div>
+  </div>
+
+  <script>
+    function revealTarot(cardNumber) {
+      let message = "";
+
+      switch (cardNumber) {
+        case 1:
+          message = "✨ La Stella: Spera, ama, sogna. Qualcuno pensa a te in silenzio.";
+          break;
+        case 2:
+          message = "🌞 Il Sole: La felicità è alle porte. L’amore che cerchi è più vicino di quanto credi.";
+          break;
+        case 3:
+          message = "🎡 La Ruota della Fortuna: I sentimenti cambiano, ma qualcosa di meraviglioso è in arrivo.";
+          break;
+        default:
+          message = "Errore: Carta non riconosciuta.";
+      }
+
+      document.getElementById("tarotMessage").textContent = message;
+    }
+  </script>
+</body>
+</html>
