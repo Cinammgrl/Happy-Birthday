@@ -54,6 +54,24 @@
       transform: scale(1.1);
     }
 
+    .poker-cards {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.poker-card {
+  width: 100px;
+  height: 140px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.poker-card:hover {
+  transform: scale(1.1);
+}
+
     #next-level button,
     #cruciverba-area button,
     #go-to-level3 {
@@ -135,7 +153,278 @@
     </div>
 
     <div id="tarotMessage" style="margin-top: 20px; font-weight: bold;"></div>
+    <button onclick="showLevel4()">Vai al livello 4 ❤️‍🔥</button>
   </div>
+
+  <!-- LIVELLO 4 -->
+<div id="level4" style="display: none; text-align: center;">
+  <h2>🃏 Gioco delle Carte dell'Amore</h2>
+  <p>Scegli un seme per ricevere una domanda speciale...</p>
+
+  <!-- Carte -->
+  <div class="poker-cards">
+    <img src="assets/images/cuori.png" alt="Cuori" onclick="askQuestion('cuori')" class="poker-card">
+    <img src="assets/images/fiori.png" alt="Fiori" onclick="askQuestion('fiori')" class="poker-card">
+    <img src="assets/images/picche.png" alt="Picche" onclick="askQuestion('picche')" class="poker-card">
+    <img src="assets/images/quadri.png" alt="Quadri" onclick="askQuestion('quadri')" class="poker-card">
+  </div>
+
+  <!-- Sezione della domanda e risposta -->
+  <div id="questionSection" style="margin-top: 20px; display: none;">
+    <p id="questionText"></p>
+    <input type="text" id="userAnswer" placeholder="Scrivi qui la tua risposta">
+    <button onclick="showDedica()">Invia</button>
+  </div>
+
+  <!-- Dedica -->
+  <div id="dedicaSection" style="margin-top: 20px; display: none;">
+    <p id="dedicaText" style="font-style: italic;"></p>
+  </div>
+</div>
+
+  <!-- SCRIPT -->
+  <script>
+    const quotes = [
+      "Sei insieme la quiete e la confusione del mio cuore – Franz Kafka",  
+      "Se l'aria mi raccontasse di te vorrei perdermi per sempre nel vento – Eugenio Montale",  
+      "Sei un cielo stellato – Cesare Pavese",  
+      "Non mi riuscirà più di sognare dopo essere stato così felice accanto a te nella realtà – Dostoevskij",  
+      "Se tu ti ricordi di me, allora non importa se tutto il mondo mi dimentica – Murakami",  
+      "Quando non sarai più parte di me... il cielo sarà così bello che tutto il mondo si innamorerà della notte – Shakespeare",  
+      "Perché io non so dire quel che i suoi occhi mi fanno provare... Occhi. I suoi. – D’Annunzio"
+    ];
+
+    const frog = document.getElementById("frog");
+    const messageDiv = document.getElementById("message");
+    const popSound = document.getElementById("pop_sound");
+    const bgMusic = document.getElementById("bg-music");
+    const nextLevelDiv = document.getElementById("next-level");
+    const goToLevel2Btn = document.getElementById("go-to-level2");
+
+    let clickCount = 0;
+
+    frog.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      messageDiv.textContent = quotes[randomIndex];
+      popSound.currentTime = 0;
+      popSound.play();
+      clickCount++;
+
+      if (clickCount >= 7) {
+        nextLevelDiv.style.display = "block";
+      }
+    });
+
+    goToLevel2Btn.addEventListener("click", () => {
+      document.getElementById("level1").style.display = "none";
+      document.getElementById("level2").style.display = "block";
+    });
+
+    document.body.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+      }
+    }, { once: true });
+
+    function checkCruciverba() {
+      const input = document.getElementById("cruciverba-input").value.trim().toLowerCase();
+      const feedback = document.getElementById("cruciverba-feedback");
+
+      if (input === "namecciano") {
+        feedback.textContent = "🎉 Esatto! Bravissimo! ❤️";
+        feedback.style.color = "#28a745";
+
+        if (!document.getElementById("go-to-level3")) {
+          const btnLevel3 = document.createElement("button");
+          btnLevel3.textContent = "Vai al livello 3: Tarocchi dell'amore";
+          btnLevel3.id = "go-to-level3";
+          btnLevel3.onclick = goToLevel3;
+          document.getElementById("level2").appendChild(btnLevel3);
+        }
+      } else {
+     <!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ranocchi dell’Amore - Livelli</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: 'Cursive', sans-serif;
+      text-align: center;
+      padding: 40px;
+      color: #8b4d74;
+    }
+
+    h1, h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .froggy {
+      width: 150px;
+      cursor: pointer;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .message {
+      font-size: 1.3em;
+      margin-top: 30px;
+      min-height: 60px;
+      transition: opacity 0.5s;
+    }
+
+    .tarot-cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .tarot-card {
+      width: 100px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .tarot-card:hover {
+      transform: scale(1.1);
+    }
+
+    .poker-cards {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.poker-card {
+  width: 100px;
+  height: 140px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.poker-card:hover {
+  transform: scale(1.1);
+}
+
+    #next-level button,
+    #cruciverba-area button,
+    #go-to-level3 {
+      background-color: #d87fa1;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 30px;
+      font-size: 1.3em;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(216, 127, 161, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-family: 'Cursive', sans-serif;
+      margin-top: 20px;
+    }
+
+    #next-level button:hover,
+    #cruciverba-area button:hover,
+    #go-to-level3:hover {
+      background-color: #b75d7f;
+      transform: scale(1.05);
+    }
+
+    #cruciverba-area input {
+      padding: 10px;
+      font-size: 1.2em;
+      border: 2px solid #d87fa1;
+      border-radius: 10px;
+    }
+
+    #cruciverba-feedback {
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Musica di sottofondo -->
+  <audio id="bg-music" src="assets/audio/loving-sound.mp3" loop></audio>
+  <audio id="pop_sound" src="assets/audio/pop_sound.mp3"></audio>
+
+  <!-- LIVELLO 1 -->
+  <div id="level1">
+    <h1>Il ranocchio dell’amore ha un messaggio per te 💌</h1>
+    <img src="assets/images/ranocchio.gif" alt="Ranocchio" class="froggy" id="frog" />
+    <div class="message" id="message"></div>
+    <div id="next-level" style="display: none;">
+      <button id="go-to-level2">Vai al livello 2: Cruciverba</button>
+    </div>
+  </div>
+
+  <!-- LIVELLO 2 -->
+  <div id="level2" style="display: none;">
+    <h2>🧩 Dragon Ball – Livello Esperto</h2>  
+    <h2>🧩 Cruciverba dell'amore</h2>  
+    <p style="font-style: italic; font-size: 40px; color: #d63384;">  
+      Indizio: Hanno creato le sfere del Drago originali e non mangiano cibo.  
+    </p>  
+    <p>Completa la parola misteriosa: <strong>N _ _ _ _ _ _ _ _ o</strong></p>  
+
+    <div id="cruciverba-area">
+      <input type="text" id="cruciverba-input" placeholder="Scrivi qui..." />  
+      <button onclick="checkCruciverba()">Invia</button>  
+    </div>
+
+    <p id="cruciverba-feedback"></p>  
+  </div>
+
+  <!-- LIVELLO 3 -->
+  <div id="level3" style="display: none;">
+    <h2>Tarocchi di Cupido</h2>
+    <p>Scegli una delle tre carte per scoprire il tuo messaggio...</p>
+    
+    <div class="tarot-cards">
+      <img src="assets/images/ilsole.png" alt="Tarocco Il Sole" onclick="revealTarot(2)" class="tarot-card">
+      <img src="assets/images/lastella.png" alt="Tarocco La Stella" onclick="revealTarot(1)" class="tarot-card">
+      <img src="assets/images/ruotadellafortuna.png" alt="Tarocco La Ruota della Fortuna" onclick="revealTarot(3)" class="tarot-card">
+    </div>
+
+    <div id="tarotMessage" style="margin-top: 20px; font-weight: bold;"></div>
+    <button onclick="showLevel4()">Vai al livello 4 ❤️‍🔥</button>
+  </div>
+
+  <!-- LIVELLO 4 -->
+<div id="level4" style="display: none; text-align: center;">
+  <h2>🃏 Gioco delle Carte dell'Amore</h2>
+  <p>Scegli un seme per ricevere una domanda speciale...</p>
+
+  <!-- Carte -->
+  <div class="poker-cards">
+    <img src="assets/images/cuori.png" alt="Cuori" onclick="askQuestion('cuori')" class="poker-card">
+    <img src="assets/images/fiori.png" alt="Fiori" onclick="askQuestion('fiori')" class="poker-card">
+    <img src="assets/images/picche.png" alt="Picche" onclick="askQuestion('picche')" class="poker-card">
+    <img src="assets/images/quadri.png" alt="Quadri" onclick="askQuestion('quadri')" class="poker-card">
+  </div>
+
+  <!-- Sezione della domanda e risposta -->
+  <div id="questionSection" style="margin-top: 20px; display: none;">
+    <p id="questionText"></p>
+    <input type="text" id="userAnswer" placeholder="Scrivi qui la tua risposta">
+    <button onclick="showDedica()">Invia</button>
+  </div>
+
+  <!-- Dedica -->
+  <div id="dedicaSection" style="margin-top: 20px; display: none;">
+    <p id="dedicaText" style="font-style: italic;"></p>
+  </div>
+</div>
 
   <!-- SCRIPT -->
   <script>
@@ -198,6 +487,28 @@
         }
       } else {
         feedback.textContent = "❌ Riprova...";
+        feedback.style.color = "#dc3545";
+      }
+    }
+
+    function goToLevel3() {
+      document.getElementById("level2").style.display = "none";
+      document.getElementById("level3").style.display = "block";
+    }
+
+    function revealTarot(choice) {
+      const messages = {
+        1: "⭐️ La stella: Faro nell’oscurità,\nincarna la speranza che guida l’anima,\nil sogno che si fa realtà,\ne la pace che nasce dal credere nel futuro.",
+        2: "☀️ Il Sole: Fonte di vita e verità,\nporta la luce che dissolve le ombre,\nrisveglia la gioia nascosta nel cuore,\ne spalanca porte di serenità e crescita.",
+        3: "🎡 La ruota della fortuna: Danza incessante del destino,\nci ricorda che tutto cambia e si rinnova,\nche nelle svolte impreviste si cela il dono,\ne che ogni passo apre nuove possibilità."
+      };
+
+      document.getElementById("tarotMessage").innerText = messages[choice];
+    }
+  </script>
+</body>
+</html>
+   feedback.textContent = "❌ Riprova...";
         feedback.style.color = "#dc3545";
       }
     }
