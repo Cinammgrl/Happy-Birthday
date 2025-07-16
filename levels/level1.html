@@ -6,8 +6,12 @@
   <title>Livello 1 - Ranocchi dell’Amore</title>
   <link rel="stylesheet" href="../style.css" />
   <style>
-    body {
-      background-color: #ffe6f0;
+    body.sfondo-romantico {
+      background-image: url('../assets/images/immagine-cuori.jpg');
+  background-size: cover;         /* Per coprire tutto lo schermo */
+  background-repeat: no-repeat;   /* Non ripetere */
+  background-position: center;    /* Centrare */
+   background-color: #ffe6f0;
       font-family: 'Cursive', sans-serif;
       text-align: center;
       padding: 40px;
@@ -37,11 +41,6 @@
       50% { transform: translateY(-10px); }
     }
     
-  background-image: url('../assets/images/immagine-cuori.jpg');
-  background-size: cover;         /* Per coprire tutto lo schermo */
-  background-repeat: no-repeat;   /* Non ripetere */
-  background-position: center;    /* Centrare */
-}
     #next-level button {
   background-color: #d87fa1;
   border: none;
@@ -61,15 +60,13 @@
 }
   </style>
 </head>
-<body>
+<body class="sfondo-romantico">
 
   <h1>Il ranocchio dell’amore ha un messaggio per te 💌</h1>
 
   <img src="../assets/images/ranocchio.gif" alt="Ranocchio" class="froggy" id="frog" />
 
   <div class="message" id="message"></div>
-
-  class="sfondo-romantico"
   
   <div id="next-level" style="margin-top: 30px; display: none;">
   <button id="go-to-level2" style="font-size:1.2em; padding:10px 20px; cursor:pointer;">
