@@ -36,6 +36,22 @@
       transform: scale(1.1);
     }
 
+    .btn-mistico {
+  margin-top: 30px;
+  padding: 12px 24px;
+  font-size: 1.1em;
+  background: #7d5ba6;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(170,130,255,0.4);
+  transition: background 0.3s ease;
+}
+.btn-mistico:hover {
+  background: #9a74c5;
+}
+
     #questionSection {
       margin-top: 30px;
     }
@@ -90,6 +106,7 @@
     <input type="text" id="userAnswer" placeholder="Scrivi qui la tua risposta" />
     <br />
     <button onclick="showDedica()">Invia</button>
+    <button onclick="goToLevel5()" class="btn-mistico">✨ Vai al Livello 5</button>
   </div>
 
   <!-- Dedica -->
@@ -133,6 +150,10 @@
       document.getElementById('dedicaText').textContent = dediche[selectedSuit];
       document.getElementById('dedicaSection').style.display = 'block';
     }
+    
+  function goToLevel5() {
+    window.location.href = "level5.html";
+  }
   </script>
   
 </body>
