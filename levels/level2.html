@@ -4,24 +4,28 @@
   <meta charset="UTF-8" />
   <title>Livello 2 – Dragon Ball Cruciverba</title>
   <style>
-body.sfondo-jpn{
-  background-color: #ffe6f0;
-  background-image: url('../assets/images/hearts-2.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0;
-  height: 100vh;
-  color: #c8a2c8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-family: cursive, sans-serif;
-}
+    body.sfondo-jpn {
+      background-color: #ffe6f0;
+      background-image: url('../assets/images/hearts-2.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
+      height: 100vh;
+      color: #c8a2c8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: cursive, sans-serif;
+    }
 
-    #level2, #level3 {
+    #level2 {
       max-width: 600px;
+      background: rgba(255, 230, 240, 0.85);
+      padding: 30px 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(200, 162, 200, 0.3);
     }
 
     h2 {
@@ -30,12 +34,14 @@ body.sfondo-jpn{
 
     p {
       font-size: 20px;
+      margin: 15px 0;
     }
 
     .indizio {
       font-style: italic;
-      font-size: 30px;
-      color: #d63384; /* lilla più acceso */
+      font-size: 28px;
+      color: #d63384; /* lilla acceso */
+      margin-bottom: 15px;
     }
 
     input[type="text"] {
@@ -43,6 +49,8 @@ body.sfondo-jpn{
       font-size: 18px;
       border: 2px solid #c8a2c8;
       border-radius: 5px;
+      width: 250px;
+      max-width: 90%;
     }
 
     button {
@@ -54,6 +62,7 @@ body.sfondo-jpn{
       border-radius: 5px;
       cursor: pointer;
       margin-left: 10px;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
@@ -63,26 +72,35 @@ body.sfondo-jpn{
     #cruciverba-feedback {
       margin-top: 20px;
       font-weight: bold;
+      min-height: 28px;
+      font-size: 20px;
+    }
+
+    #next-level-btn {
+      margin-top: 25px;
+      font-size: 20px;
+      padding: 12px 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(200, 162, 200, 0.4);
     }
   </style>
 </head>
 <body class="sfondo-jpn">
 
-  <!-- LIVELLO 2 -->
   <div id="level2">
-    <h2>🧩 Dragon Ball – Livello Esperto</h2>  
-    <h2>🧩 Cruciverba dell'amore</h2>  
+    <h2>🧩 Dragon Ball – Livello Esperto</h2>
+    <h2>🧩 Cruciverba dell'amore</h2>
 
-    <p class="indizio">Indizio: Hanno creato le sfere del Drago originali e non mangiano cibo.</p>  
+    <p class="indizio">Indizio: Hanno creato le sfere del Drago originali e non mangiano cibo.</p>
 
-    <p>Completa la parola misteriosa: <strong>N _ _ _ _ _ _ _ _ o</strong></p>  
+    <p>Completa la parola misteriosa: <strong>N _ _ _ _ _ _ _ _ o</strong></p>
 
     <div id="cruciverba-area">
-      <input type="text" id="cruciverba-input" placeholder="Scrivi qui..." />  
-      <button onclick="checkCruciverba()">Invia</button>  
+      <input type="text" id="cruciverba-input" placeholder="Scrivi qui..." aria-label="Risposta cruciverba" />
+      <button onclick="checkCruciverba()">Invia</button>
     </div>
 
-    <p id="cruciverba-feedback"></p>  
+    <p id="cruciverba-feedback" role="alert" aria-live="polite"></p>
 
     <button id="next-level-btn" onclick="goToLevel3()" style="display: none;">Vai al Livello 3</button>
   </div>
@@ -96,16 +114,16 @@ body.sfondo-jpn{
       if (risposta === "namecciano") {
         feedback.textContent = "✅ Corretto! Hai risolto l'enigma!";
         feedback.style.color = "green";
-        nextBtn.style.display = "inline-block"; // Mostra il bottone
+        nextBtn.style.display = "inline-block";
       } else {
         feedback.textContent = "❌ Risposta sbagliata, riprova!";
         feedback.style.color = "red";
-        nextBtn.style.display = "none"; // Nasconde il bottone se la risposta è sbagliata
+        nextBtn.style.display = "none";
       }
     }
 
     function goToLevel3() {
-  window.location.href = "level3.html";
+      window.location.href = "level3.html";
     }
   </script>
 
