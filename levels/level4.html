@@ -9,6 +9,9 @@
       height: 100vh;
       background-color: #ffe6f0; /* rosa perla */
       background-image: url('../assets/images/sfondopoker.png');
+      background-size: 150px;
+background-repeat: repeat;
+background-position: top left;
       color: #c8a2c8; /* lilla tenue */
       display: flex;
       flex-direction: column;
@@ -107,7 +110,7 @@
     <input type="text" id="userAnswer" placeholder="Scrivi qui la tua risposta" />
     <br />
     <button onclick="showDedica()">Invia</button>
-    <button onclick="goToLevel5()" class="btn-mistico">✨ Vai al Livello 5</button>
+    <button id="level5Btn" onclick="goToLevel5()" class="btn-mistico" disabled>✨ Vai al Livello 5</button>
   </div>
 
   <!-- Dedica -->
@@ -141,16 +144,19 @@
     }
 
     function showDedica() {
-      const answer = document.getElementById('userAnswer').value.trim();
+  const answer = document.getElementById('userAnswer').value.trim();
 
-      if (answer === '') {
-        alert('Per favore, scrivi la tua risposta prima di inviare.');
-        return;
-      }
+  if (answer === '') {
+    alert('Per favore, scrivi la tua risposta prima di inviare.');
+    return;
+  }
 
-      document.getElementById('dedicaText').textContent = dediche[selectedSuit];
-      document.getElementById('dedicaSection').style.display = 'block';
-    }
+  document.getElementById('dedicaText').textContent = dediche[selectedSuit];
+  document.getElementById('dedicaSection').style.display = 'block';
+
+  // Abilita il bottone per passare al livello 5
+  document.getElementById('level5Btn').disabled = false;
+}
     
   function goToLevel5() {
     window.location.href = "level5.html";
